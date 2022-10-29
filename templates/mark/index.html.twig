@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mark index{% endblock %}
+
+{% block body %}
+    <h1>Mark index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Student</th>
+                <th>Subject</th>
+                <th>ASM1</th>
+                <th>ASM2</th>
+                <th>Average</th>
+                <th>Status</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for mark in marks %}
+            <tr>
+                <td>{{ mark.id }}</td>
+                <td>{{ mark.Student.Name }}</td>
+                <td>{{ mark.Subject.Name }}</td>
+                <td>{{ mark.ASM1 }}</td>
+                <td>{{ mark.ASM2 }}</td>
+                <td>{{ mark.Average }}</td>
+                <td>{{ mark.Status }}</td>
+                <td>
+                    <a href="{{ path('app_mark_show', {'id': mark.id}) }}">show</a>
+                    <a href="{{ path('app_mark_edit', {'id': mark.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_mark_new') }}">Create new</a>
+{% endblock %}
