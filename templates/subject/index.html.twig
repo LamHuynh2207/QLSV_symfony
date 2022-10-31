@@ -45,7 +45,7 @@
                 }}">
                 show
               </a>
-              <a class="btn btn-outline-primary"
+              <a class="btn btn-outline-warning"
                 type="submit"
                 href="{{
                 path(
@@ -69,10 +69,12 @@
       </tbody>
     </table>
 
-    <a class="btn btn-outline-primary container"
+    <div class="container px-5">
+      <a class="btn btn-outline-primary gap-2 col-2 mx-auto d-md-block"
       type="submit"
       href="{{ path('app_subject_new') }}">
       Create new
     </a>
+    </div>
   </div>
 {% endblock %}

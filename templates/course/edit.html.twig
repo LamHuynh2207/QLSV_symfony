@@ -3,11 +3,16 @@
 {% block title %}Edit Course{% endblock %}
 
 {% block body %}
+    <div class="text-center">
     <h1>Edit Course</h1>
-
+    </div>
+    <div class="gap-2 col-2 mx-auto d-md-block">
     {{ include('course/_form.html.twig', {'button_label': 'Update'}) }}
-
-    <a href="{{ path('app_course_index') }}">back to list</a>
-
+    </div>
+     <div class="gap-2 col-1 mx-auto d-md-block px-2">
+    <a class="btn btn-info container" href="{{ path('app_course_index') }}">back to list</a>
+    </div>
+    <div class =" col-2 mx-auto d-md-block py-1">
     {{ include('course/_delete_form.html.twig') }}
+    </div>
 {% endblock %}
