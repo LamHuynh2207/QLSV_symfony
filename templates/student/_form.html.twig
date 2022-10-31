@@ -1,4 +1,35 @@
 {{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
+{#    {{ form_widget(form) }}#}
+<div class="container-sm">
+    <div class="row">
+        <label>
+            {{ form_label(form.Name, "Fullname") }}
+        </label>
+        {{ form_widget(form.Name, {'attr': {'class': 'form-control'}}) }}
+    </div>
+<div class="row">
+        <label>
+            {{ form_label(form.Gender, "Gender") }}
+        </label>
+        {{ form_widget(form.Gender, {'attr': {'class': 'form-control'}}) }}
+    </div>
+
+    <div class="row">
+        <label>
+            {{ form_label(form.DayofBirth, "Day of Birth") }}
+        </label>
+        {{ form_widget(form.DayofBirth, {'attr': {'class': 'form-control', 'type':'date'}}) }}
+    </div>
+    <div class="row">
+        <label>
+            {{ form_label(form.Course, "Course") }}
+        </label>
+        {{ form_widget(form.Course, {'attr': {'class': 'form-control'}}) }}
+    </div>
+
+    <br>
+    <div class="row">
+    <button class="btn btn-primary">{{ button_label|default('Save') }}</button>
+    </div>
+</div>
 {{ form_end(form) }}
