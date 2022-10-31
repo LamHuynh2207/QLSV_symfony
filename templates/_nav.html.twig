@@ -3,10 +3,10 @@
       <a href="/" class="d-flex align-items-center mb-3 mb-md-0  text-dark text-decoration-none">
         <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
         <h1><p class="text-primary"  >Student Management</p></h1>
-        
-      </a>
-        
+      </a>   
+
       <ul class="nav nav-pills">
+      <li class="btn btn-outline-light" ><a href="{{ path('app_homepage') }}" class="nav-link">Home</a></li>
       <li class="btn btn-outline-light" ><a href="{{ path('app_student_index') }}" class="nav-link">Student</a></li>
       <li class="btn btn-outline-light"><a href="{{ path('app_teacher_index') }}" class="nav-link">Teacher</a></li>
         <li class="btn btn-outline-light"><a href="{{ path('app_mark_index') }}" class="nav-link">Mark</a></li>
@@ -23,5 +23,6 @@
             </form>
 
     </nav>
-  </header>
-</div>
+    </header>
+
+<div 
