@@ -1,7 +1,6 @@
 {{ form_start(form) }}
 {#    {{ form_widget(form) }}#}
-<div class="container-sm">
-    
+<div class="container">
     <div class="row">
         <label>
             {{ form_label(form.Name, "Fullname") }}
@@ -21,16 +20,14 @@
         </label>
         {{ form_widget(form.DayofBirth, {'attr': {'class': 'form-control', 'type':'date'}}) }}
     </div>
-    <div class="row">
-        <label>
-            {{ form_label(form.Course, "Course") }}
+    <div class="row ">
+        <label >
+            {{ form_label (form.Course, "Course") }}
         </label>
         {{ form_widget(form.Course, {'attr': {'class': 'form-control'}}) }}
     </div>
-
-    <br>
-    <div class="row">
-    <button class="btn btn-primary">{{ button_label|default('Save') }}</button>
-    </div>
 </div>
+<div class="d-grid gap-2 col-2 mx-auto d-md-block py-1">
+    <button class="btn btn-info">{{ button_label|default('Save') }}</button>
+    </div>
 {{ form_end(form) }}

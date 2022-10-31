@@ -8,6 +8,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use App\Entity\Course;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 
 class StudentType extends AbstractType
 {
@@ -16,7 +17,7 @@ class StudentType extends AbstractType
         $builder
             ->add('Name')
             ->add('Gender')
-            ->add('DayofBirth')
+            ->add('DayofBirth', DateType::class, ['widget' => 'single_text', 'format' => 'yyyy-MM-dd',])
             ->add('Course', EntityType::class, ['class' => Course::class, 'choice_label' => 'CourseName'])
         ;
     }

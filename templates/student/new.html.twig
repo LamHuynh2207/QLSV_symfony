@@ -3,9 +3,14 @@
 {% block title %}New Student{% endblock %}
 
 {% block body %}
+  <div class="container">
+  <div class="text-center">
     <h1>Create new Student</h1>
-
+    </div>
+    <div class=" col-3 mx-auto d-md-block">
     {{ include('student/_form.html.twig') }}
-
-    <a class="btn btn-primary" href="{{ path('app_student_index') }}">back to list</a>
+    </div>
+    <div class =" d-grid gap-2 col-1 mx-auto d-md-block dx-1 ">
+    <a class="btn btn-info container" href="{{ path('app_student_index') }}">back to list</a>
+    </div>
 {% endblock %}

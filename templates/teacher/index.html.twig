@@ -12,18 +12,10 @@
     <table class="table table-striped table-bordered text-center">
       <thead>
         <tr class="table table-info">
-          <th>
-            Id
-          </th>
-          <th>
-            Name
-          </th>
-          <th>
-            Phone
-          </th>
-          <th>
-            actions
-          </th>
+          <th>Id</th>
+          <th>Name</th>
+          <th>Phone</th>
+          <th>actions</th>
         </tr>
       </thead>
       <tbody>
@@ -51,18 +43,7 @@
                 }}">
                 show
               </a>
-              <a class="btn btn-outline-primary"
-                type="submit"
-                href="{{
-                path(
-                  'app_teacher_edit',
-                  {
-                    id: teacher.id
-                  }
-                )
-                }}">
-                edit
-              </a>
+              <a class="btn btn-outline-warning" type="submit" href="{{path('app_teacher_edit', {id: teacher.id})}}">Edit</a>
             </td>
           </tr>
         {% else %}
@@ -75,11 +56,7 @@
       </tbody>
     </table>
     <div class="container px-5">
-      <a class="btn btn-outline-primary container"
-        type="submit"
-        href="{{ path('app_teacher_new') }}">
-        Create new
-      </a>
+      <a class="btn btn-outline-primary gap-2 col-2 mx-auto d-md-block" type="submit" href="{{ path('app_teacher_new') }}">Create new</a>
     </div>
   </div>
 {% endblock %}
