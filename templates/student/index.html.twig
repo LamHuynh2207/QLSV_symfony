@@ -3,9 +3,9 @@
 {% block title %}Student Listing{% endblock %}
 
 {% block body %}
-    <h1>Student index</h1>
+    <h1>Student Listing</h1>
     <div class="table container px-5">
-    <table class="table table-striped table-bordered  text-center ">
+    <table class="table table-striped table-bordered text-center ">
   
         <thead>
             <tr class="table table-info ">
@@ -16,7 +16,7 @@
                 <th>actions</th>
             </tr>
         </thead>
-        <tbody >
+        <tbody>
         {% for student in students %}
             <tr>
                 <td><strong>{{ student.id }}</strong></td>
@@ -25,7 +25,7 @@
                 <td>{{ student.DayofBirth ? student.DayofBirth|date('Y-m-d') : '' }}</td>
                 <td>
                     <a class="btn btn-outline-primary"  type="submit" href="{{ path('app_student_show', {'id': student.id}) }}">show</a>
-                    <a class="btn btn-outline-primary"  type="submit" href="{{ path('app_student_edit', {'id': student.id}) }}">edit</a>
+                    <a class="btn btn-outline-warning"  type="submit" href="{{ path('app_student_edit', {'id': student.id}) }}">edit</a>
                 </td>
             </tr>
         {% else %}

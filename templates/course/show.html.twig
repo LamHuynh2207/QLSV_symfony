@@ -3,10 +3,10 @@
 {% block title %}Course{% endblock %}
 
 {% block body %}
-    <h1>Course</h1>
-
+    <h1>Course Infomation</h1>
+    <div class=" table container px-5">
     <table class="table  table-bordered container text-center px-5 ">
-        <tbody>
+        <tbody >
             <tr>
                 <th class="table-primary">Id</th>
                 <td>{{ course.id }}</td>
@@ -23,11 +23,13 @@
             </tr>
         </tbody>
     </table>
-    <div class="container px-5">
-    <a href="{{ path('app_course_index') }}">back to list</a>
+    <div class=" gap-2 col-2 mx-auto d-md-block" >
+    <a class="btn btn-primary" href="{{ path('app_course_index') }}">back to list</a>
 
-    <a href="{{ path('app_course_edit', {'id': course.id}) }}">edit</a>
-
+    <a class="btn btn-primary " href="{{ path('app_course_edit', {'id': course.id}) }}">edit</a>
+     </div>
+     <div class="py-1">
     {{ include('course/_delete_form.html.twig') }}
+    </div>
     </div>
 {% endblock %}
