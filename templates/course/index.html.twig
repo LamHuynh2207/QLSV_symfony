@@ -27,8 +27,8 @@
                 <td><strong>{{ course.id }}</strong></td>
                 <td>{{ course.CourseName }}</td>
                 <td>
-                    <a class="btn btn-outline-info"   href="{{ path('app_course_show', {'id': course.id}) }}" type="submit">show</a>
-                    <a class="btn btn-outline-warning"   href="{{ path('app_course_edit', {'id': course.id}) }}" type="submit">edit</a>
+                    <a class="btn btn-outline-info"   href="{{ path('app_course_show', {'id': course.id}) }}" type="submit">Show</a>
+                    <a class="btn btn-outline-warning"   href="{{ path('app_course_edit', {'id': course.id}) }}" type="submit">Edit</a>
                 </td>
             </tr>
         {% else %}
