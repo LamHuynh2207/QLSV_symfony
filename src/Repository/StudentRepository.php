@@ -39,28 +39,28 @@ class StudentRepository extends ServiceEntityRepository
             $this->getEntityManager()->flush();
         }
     }
+   
+    public function countMale(): int
+    {
+        $entityManager = $this->getEntityManager();
+        $qb = $entityManager->createQueryBuilder();
+                $qb -> select('count(s.id)')
+                ->from('App\Entity\Student', 's')
+                ->where('s.Gender = :sex ')
+                ->setParameter('sex', 'Male');
+        return $qb->getQuery()->getSingleScalarResult();
 
-    public function countMale(): array
-    {
-        $entityManager = $this->getEntityManager();
-        $qb = $entityManager->createQuery(
-            'select count(s.id)
-            from App\Entity\Student s
-            group by s.gender
-            where s.gender like :gender'
-        )->setParameter('gender', 'Male');
-        return $qb->getResult();
     }
-    public function countFemale(): array
+    public function countFemale(): int
     {
         $entityManager = $this->getEntityManager();
-        $qb = $entityManager->createQuery();
-        $qb->select('count(s.id)')
-            ->from('App\Entity\Student', 's')
-            ->groupBy('s.Gender')
-            ->where('s.Gender = :sex ')
-            ->setParameter('sex', 'female');
-        return $qb->getQuery()->getResult();
+        $qb = $entityManager->createQueryBuilder();
+                $qb -> select('count(s.id)')
+                ->from('App\Entity\Student', 's')
+                ->where('s.Gender = :sex ')
+                ->setParameter('sex', 'Female');
+        return $qb->getQuery()->getSingleScalarResult();
+
     }
 
 
