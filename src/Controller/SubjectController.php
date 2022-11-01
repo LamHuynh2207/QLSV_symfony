@@ -9,20 +9,38 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Doctrine\Common\Collections\Criteria;
+use Doctrine\Persistence\ManagerRegistry;
+use Exception;
 
 /**
  * @Route("/subject")
  */
 class SubjectController extends AbstractController
 {
-    /**
+   /**
      * @Route("/", name="app_subject_index", methods={"GET"})
+     * @param SubjectRepository $subjectRepository
+     * @param Request $request
+     
+     *
+     * @return Response
      */
-    public function index(SubjectRepository $subjectRepository): Response
+    public function index(request $request,SubjectRepository $subjectRepository): Response
     {
-        return $this->render('subject/index.html.twig', [
-            'subjects' => $subjectRepository->findAll(),
-        ]);
+        $Name = $request->query->get('Name');
+
+        $expressionBuilder = Criteria::expr();
+        $criteria = new Criteria();
+
+        if (!is_null($Name) && !empty(($Name))) {
+            $criteria->andWhere($expressionBuilder->contains('Name', $Name));
+        }
+        $filteredList = $subjectRepository->matching($criteria);
+
+            return $this->renderForm('subject/index.html.twig', [
+                'subjects' => $filteredList
+            ]);
     }
 
     /**

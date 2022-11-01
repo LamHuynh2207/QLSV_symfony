@@ -9,6 +9,11 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Doctrine\Common\Collections\Criteria;
+use Doctrine\Persistence\ManagerRegistry;
+use Exception;
+
+
 
 /**
  * @Route("/teacher")
@@ -17,12 +22,28 @@ class TeacherController extends AbstractController
 {
     /**
      * @Route("/", name="app_teacher_index", methods={"GET"})
+     * @param TeacherRepository $TeacherRepository
+     * @param Request $request
+     
+     *
+     * @return Response
      */
-    public function index(TeacherRepository $teacherRepository): Response
+    public function index(request $request, TeacherRepository $teacherRepository): Response
     {
-        return $this->render('teacher/index.html.twig', [
-            'teachers' => $teacherRepository->findAll(),
-        ]);
+        $Name = $request->query->get('Name');
+
+        $expressionBuilder = Criteria::expr();
+        $criteria = new Criteria();
+
+        if (!is_null($Name) && !empty(($Name))) {
+            $criteria->andWhere($expressionBuilder->contains('Name', $Name));
+        }
+        $filteredList = $teacherRepository->matching($criteria);
+
+            return $this->renderForm('teacher/index.html.twig', [
+                'teachers' => $filteredList
+            ]);
+        
     }
 
     /**

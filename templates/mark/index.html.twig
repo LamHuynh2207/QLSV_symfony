@@ -5,6 +5,14 @@
 {% block body %}
     <div class="table container px-5">
     <h1>Mark Listing</h1>
+     <form action={{ path('app_mark_index') }} method="get">
+                    <div>
+                      <div class="input-group">
+                        <input type="" name="Name" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon">
+                        <button type="submit" class="btn btn-outline-primary" value="Search" >search</button>
+                      </div>
+                    </div>            
+    </form><br>
     <table class="table table-striped table-bordered  text-center ">
         <thead>
             <tr class="table table-info ">

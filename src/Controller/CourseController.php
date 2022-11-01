@@ -9,6 +9,10 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Doctrine\Common\Collections\Criteria;
+use Doctrine\Persistence\ManagerRegistry;
+use Exception;
+
 
 /**
  * @Route("/course")
@@ -17,12 +21,27 @@ class CourseController extends AbstractController
 {
     /**
      * @Route("/", name="app_course_index", methods={"GET"})
+      * @param CourseRepository $courseRepository
+     * @param Request $request
+     
+     *
+     * @return Response
      */
-    public function index(CourseRepository $courseRepository): Response
+    public function index(request $request,CourseRepository $courseRepository): Response
     {
-        return $this->render('course/index.html.twig', [
-            'courses' => $courseRepository->findAll(),
-        ]);
+        $Name = $request->query->get('Name');
+
+        $expressionBuilder = Criteria::expr();
+        $criteria = new Criteria();
+
+        if (!is_null($Name) && !empty(($Name))) {
+            $criteria->andWhere($expressionBuilder->contains('CourseName', $Name));
+        }
+        $filteredList = $courseRepository->matching($criteria);
+
+            return $this->renderForm('course/index.html.twig', [
+                'courses' => $filteredList
+            ]);
     }
 
     /**
