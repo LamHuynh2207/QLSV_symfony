@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\Entity\Student;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\Mapping\Id;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -39,28 +40,52 @@ class StudentRepository extends ServiceEntityRepository
         }
     }
 
-//    /**
-//     * @return Student[] Returns an array of Student objects
-//     */
-//    public function findByExampleField($value): array
-//    {
-//        return $this->createQueryBuilder('s')
-//            ->andWhere('s.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->orderBy('s.id', 'ASC')
-//            ->setMaxResults(10)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
+    public function countMale(): array
+    {
+        $entityManager = $this->getEntityManager();
+        $qb = $entityManager->createQuery(
+            'select count(s.id)
+            from App\Entity\Student s
+            group by s.gender
+            where s.gender like :gender'
+        )->setParameter('gender', 'Male');
+        return $qb->getResult();
+    }
+    public function countFemale(): array
+    {
+        $entityManager = $this->getEntityManager();
+        $qb = $entityManager->createQuery();
+        $qb->select('count(s.id)')
+            ->from('App\Entity\Student', 's')
+            ->groupBy('s.Gender')
+            ->where('s.Gender = :sex ')
+            ->setParameter('sex', 'female');
+        return $qb->getQuery()->getResult();
+    }
 
-//    public function findOneBySomeField($value): ?Student
-//    {
-//        return $this->createQueryBuilder('s')
-//            ->andWhere('s.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->getQuery()
-//            ->getOneOrNullResult()
-//        ;
-//    }
+
+    //    /**
+    //     * @return Student[] Returns an array of Student objects
+    //     */
+    //    public function findByExampleField($value): array
+    //    {
+    //        return $this->createQueryBuilder('s')
+    //            ->andWhere('s.exampleField = :val')
+    //            ->setParameter('val', $value)
+    //            ->orderBy('s.id', 'ASC')
+    //            ->setMaxResults(10)
+    //            ->getQuery()
+    //            ->getResult()
+    //        ;
+    //    }
+
+    //    public function findOneBySomeField($value): ?Student
+    //    {
+    //        return $this->createQueryBuilder('s')
+    //            ->andWhere('s.exampleField = :val')
+    //            ->setParameter('val', $value)
+    //            ->getQuery()
+    //            ->getOneOrNullResult()
+    //        ;
+    //    }
 }

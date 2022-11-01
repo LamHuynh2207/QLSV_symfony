@@ -43,9 +43,13 @@ class StudentController extends AbstractController
             $criteria->andWhere($expressionBuilder->contains('Name', $Name));
         }
         $filteredList = $studentRepository->matching($criteria);
+        $numOfMale=$studentRepository->countMale();
+        $numOfFemale=$studentRepository->countFemale();
 
             return $this->renderForm('student/index.html.twig', [
-                'students' => $filteredList
+                'students' => $filteredList,
+                'tongsonam'=>$numOfMale,
+                'tongsonu'=>$numOfFemale,
             ]);
         
                
