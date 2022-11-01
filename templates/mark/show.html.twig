@@ -3,7 +3,9 @@
 {% block title %}Mark{% endblock %}
 
 {% block body %}
+    <div>
     <h1>Mark Infomation</h1>
+    </div>
     <div class=" table container px-5">
     <table class="table  table-bordered container text-center px-5 ">
         <tbody>
@@ -38,12 +40,12 @@
         </tbody>
     </table>
      <div class=" gap-2 col-2 mx-auto d-md-block" >
-    <a class="btn btn-primary " href="{{ path('app_mark_index') }}">back to list</a>
+    <a class="btn btn-info " href="{{ path('app_mark_index') }}">back to list</a>
 
-    <a class="btn btn-primary " href="{{ path('app_mark_edit', {'id': mark.id}) }}">edit</a>
+    <a class="btn btn-warning " href="{{ path('app_mark_edit', {'id': mark.id}) }}">Edit</a>
      </div>
      <div class="py-1">
     {{ include('mark/_delete_form.html.twig') }}
     </div>
-    </div>
+    
 {% endblock %}

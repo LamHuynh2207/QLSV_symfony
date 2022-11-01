@@ -3,10 +3,13 @@
 {% block title %}New Mark{% endblock %}
 
 {% block body %}
+    <div class="text-center">
     <h1>Create new Mark</h1>
-     <div class="gap-2 col-2 mx-auto d-md-block">
-    {{ include('mark/_form.html.twig') }}
-
-    <a class="btn btn-primary" href="{{ path('app_mark_index') }}">back to list</a>
     </div>
+     <div class=" col-3 mx-auto d-md-block">
+    {{ include('mark/_form.html.twig') }}
+     </div>
+     <div class =" d-grid gap-2 col-1 mx-auto d-md-block px-1 ">
+    <a class="btn btn-primary" href="{{ path('app_mark_index') }}">back to list</a>
+     </div>
 {% endblock %}

@@ -3,9 +3,13 @@
 {% block title %}New Course{% endblock %}
 
 {% block body %}
+    <div class="text-center">
     <h1>Create New Course</h1>
-
+    </div>
+    <div class=" col-3 mx-auto d-md-block">
     {{ include('course/_form.html.twig') }}
-
+    </div>
+    <div class =" d-grid gap-2 col-1 mx-auto d-md-block px-1 ">
     <a class="btn btn-primary" href="{{ path('app_course_index') }}">back to list</a>
+    </div>
 {% endblock %}
