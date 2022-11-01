@@ -9,7 +9,9 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-
+use Doctrine\Common\Collections\Criteria;
+use Doctrine\Persistence\ManagerRegistry;
+use Exception;
 /**
  * @Route("/mark")
  */
@@ -17,12 +19,28 @@ class MarkController extends AbstractController
 {
     /**
      * @Route("/", name="app_mark_index", methods={"GET"})
+     * @param MarkRepository $markRepository
+     * @param Request $request
+     
+     *
+     * @return Response
      */
-    public function index(MarkRepository $markRepository): Response
+    public function index(request $request,MarkRepository $markRepository): Response
     {
-        return $this->render('mark/index.html.twig', [
-            'marks' => $markRepository->findAll(),
-        ]);
+        
+        $Name = $request->query->get('Name');
+
+        $expressionBuilder = Criteria::expr();
+        $criteria = new Criteria();
+
+        if (!is_null($Name) && !empty(($Name))) {
+            $criteria->andWhere($expressionBuilder->contains('Status', $Name));
+        }
+        $filteredList = $markRepository->matching($criteria);
+
+            return $this->renderForm('mark/index.html.twig', [
+                'marks' => $filteredList
+            ]);
     }
 
     /**
