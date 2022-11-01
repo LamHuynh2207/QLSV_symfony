@@ -30,10 +30,10 @@
             Gender
           </th>
           <th>
-            DayofBirth
+            Day of Birth
           </th>
           <th>
-            actions
+            Actions
           </th>
         </tr>
       </thead>
@@ -53,7 +53,7 @@
               {{ student.DayofBirth ? student.DayofBirth|date('Y-m-d') : '' }}
             </td>
             <td>
-              <a class="btn btn-outline-primary"
+              <a class="btn btn-outline-info"
                 type="submit"
                 href="{{
                 path(
@@ -89,7 +89,7 @@
       </tbody>
     </table>
 
-    <a class="btn btn-outline-primary gap-2 col-2 mx-auto d-md-block" type="submit" href="{{ path('app_student_new') }}">
+    <a class="btn btn-primary gap-2 col-2 mx-auto d-md-block" type="submit" href="{{ path('app_student_new') }}">
       Create new
     </a>
   </div>

@@ -23,7 +23,7 @@
                 <th>ASM2</th>
                 <th>Average</th>
                 <th>Status</th>
-                <th>actions</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -37,7 +37,7 @@
                 <td>{{ mark.Average }}</td>
                 <td>{{ mark.Status }}</td>
                 <td>
-                    <a class="btn btn-outline-primary"   href="{{ path('app_mark_show', {'id': mark.id}) }}" type="submit">show</a>
+                    <a class="btn btn-outline-info"   href="{{ path('app_mark_show', {'id': mark.id}) }}" type="submit">show</a>
                     <a class="btn btn-outline-warning"   href="{{ path('app_mark_edit', {'id': mark.id}) }}" type="submit">edit</a>
                 </td>
             </tr>
@@ -49,6 +49,6 @@
         </tbody>
     </table>
 
-     <a class="btn btn-outline-primary gap-2 col-2 mx-auto d-md-block" href="{{ path('app_mark_new') }}" type="submit">Create new</a>
+     <a class="btn btn-primary gap-2 col-2 mx-auto d-md-block" href="{{ path('app_mark_new') }}" type="submit">Create new</a>
     </div>
 {% endblock %}

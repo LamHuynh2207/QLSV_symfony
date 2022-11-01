@@ -23,7 +23,7 @@
           <th>Id</th>
           <th>Name</th>
           <th>Phone</th>
-          <th>actions</th>
+          <th>Actions</th>
         </tr>
       </thead>
       <tbody>
@@ -39,7 +39,7 @@
               {{ teacher.Phone }}
             </td>
             <td>
-              <a class="btn btn-outline-primary"
+              <a class="btn btn-outline-info"
                 type="submit"
                 href="{{
                 path(
@@ -64,7 +64,7 @@
       </tbody>
     </table>
     <div class="container px-5">
-      <a class="btn btn-outline-primary gap-2 col-2 mx-auto d-md-block" type="submit" href="{{ path('app_teacher_new') }}">Create new</a>
+      <a class="btn btn-primary gap-2 col-2 mx-auto d-md-block" type="submit" href="{{ path('app_teacher_new') }}">Create new</a>
     </div>
   </div>
 {% endblock %}
