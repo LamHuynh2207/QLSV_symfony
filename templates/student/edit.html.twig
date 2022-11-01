@@ -6,11 +6,11 @@
     <div class="text-center">
     <h1>Edit Student</h1>
     </div>
-    <div class="gap-2 col- mx-auto d-md-block">
+    <div class="gap-2 col-3 mx-auto d-md-block">
     {{ include('student/_form.html.twig', {'button_label': 'Update'}) }} 
     </div>
     <div class="gap-2 col-1 mx-auto d-md-block px-2"> 
-    <a class="btn btn-info" href="{{ path('app_student_index') }}">back to list</a>
+    <a class="btn btn-primary" href="{{ path('app_student_index') }}">Back to list</a>
     </div>
     <div class =" col-2 mx-auto d-md-block py-1">
     {{ include('student/_delete_form.html.twig') }}
